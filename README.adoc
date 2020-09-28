@@ -1,0 +1,6 @@
+= pkotlin
+
+Playing with Kotlin
+
+== Subprojects
+ * coroutines-basics - playing with Kotlin Coroutines (multi-threading)

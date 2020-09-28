@@ -1,2 +1,0 @@
-# pkotlin
-Playing with Kotlin
