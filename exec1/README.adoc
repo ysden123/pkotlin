@@ -1,0 +1,3 @@
+= exec1
+
+Base project for creating executable JAR for Kotlin.

@@ -3,4 +3,7 @@
 Playing with Kotlin
 
 == Subprojects
- * coroutines-basics - playing with Kotlin Coroutines (multi-threading)
+* basics - playing with Kotlin: basics
+* coroutines-basics - playing with Kotlin Coroutines (multi-threading)
+* exec1 - base project for creating executable JAR for Kotlin
+* vertx - playing with Vertx on Kotlin
