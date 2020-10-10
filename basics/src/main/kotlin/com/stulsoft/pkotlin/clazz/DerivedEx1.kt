@@ -4,7 +4,8 @@
 
 package com.stulsoft.pkotlin.clazz
 
-/**
+/** DerivedEx1 class extends BaseClass1 and implements ITest1 and ITest2 interfaces.
+ *
  * @author Yuriy Stul
  */
 class DerivedEx1 : BaseClass1(), ITest1, ITest2 {
