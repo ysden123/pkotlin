@@ -23,9 +23,9 @@ fun main() {
             "/test" bind POST to { request -> postHandler(request) }
     )
 
-    app.asServer(Jetty(9000)).start()
+    app.asServer(Jetty(8080)).start()
 
-    val request: Request = Request(POST, "http://localhost:9000/test").body("Some body text")
+    val request: Request = Request(POST, "http://localhost:8080/test").body("Some body text")
 
     val client: HttpHandler = OkHttp()
     val networkResponse: Response = client(request)

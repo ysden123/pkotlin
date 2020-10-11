@@ -31,11 +31,11 @@ fun main() {
         }
     )
 
-    app.asServer(Jetty(9000)).start()
+    app.asServer(Jetty(8080)).start()
 }
 
 /**
- * URL: http://localhost:9000/ping
+ * URL: http://localhost:8080/ping
  */
 fun pingHandler(): Response {
     val logger: Logger = LoggerFactory.getLogger("")
@@ -44,7 +44,7 @@ fun pingHandler(): Response {
 }
 
 /**
- * URL: http://localhost:9000/greet/{name}
+ * URL: http://localhost:8080/greet/{name}
  */
 fun greetHandler(req: Request): Response {
     val logger: Logger = LoggerFactory.getLogger("")
@@ -54,7 +54,7 @@ fun greetHandler(req: Request): Response {
 }
 
 /**
- * URL: http://localhost:9000/greet2?name=yuriy
+ * URL: http://localhost:8080/greet2?name=yuriy
  */
 fun greetHandler2(req: Request): Response {
     val logger: Logger = LoggerFactory.getLogger("")
@@ -64,7 +64,7 @@ fun greetHandler2(req: Request): Response {
 }
 
 /**
- * URL: http://localhost:9000/greet3/yuriy
+ * URL: http://localhost:8080/greet3/yuriy
  */
 fun greetHandler3(name: String?): Response {
     val logger: Logger = LoggerFactory.getLogger("")

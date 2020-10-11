@@ -68,12 +68,12 @@ fun main() {
     val filteredApp: HttpHandler = compositeFilter.then(app)
 
     // only 1 LOC to mount an app and start it in a container
-    filteredApp.asServer(Jetty(9000)).start()
+    filteredApp.asServer(Jetty(8080)).start()
 
     // HTTP clients are also HttpHandlers!
     val client: HttpHandler = OkHttp()
 
-    val networkResponse: Response = client(Request(GET, "http://localhost:9000/greet/Bob"))
+    val networkResponse: Response = client(Request(GET, "http://localhost:8080/greet/Bob"))
     println(networkResponse)
 
 // Produces:
