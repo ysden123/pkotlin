@@ -17,10 +17,6 @@ import org.http4k.server.asServer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-/**
- * @author Yuriy Stul
- */
-
 fun main() {
     val logger: Logger = LoggerFactory.getLogger("")
     logger.info("==>main")
