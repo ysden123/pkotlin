@@ -16,27 +16,19 @@ repositories {
 }
 
 val logVersion = "2.13.3"
-val vertxVersion = "3.9.3"
-val reactivexVersion = "2.2.19"
 
 dependencies {
     testImplementation(kotlin("test-junit"))
-//    Vertx
-    implementation("io.vertx:vertx-core:$vertxVersion")
-    implementation("io.vertx:vertx-rx-java2:$vertxVersion")
-    implementation("io.vertx:vertx-reactive-streams:$vertxVersion")
-//    RxJava
-    implementation("io.reactivex.rxjava2:rxjava:$reactivexVersion")
 //    Logging
     implementation("org.apache.logging.log4j:log4j-core:$logVersion")
     implementation("org.apache.logging.log4j:log4j-api:$logVersion")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:$logVersion")
 }
-tasks.withType<KotlinCompile>() {
+tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "11"
 }
 
 
 application {
-    mainClass.set("com.stulsoft.pkotlin.stream.StreamEx1")
+    mainClass.set("com.stulsoft.pkotlin.gradle1.MainKt")
 }
