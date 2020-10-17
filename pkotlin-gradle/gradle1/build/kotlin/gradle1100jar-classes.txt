@@ -1,1 +1,0 @@
-C:\Git\pkotlin\pkotlin-gradle\gradle1\build\classes\kotlin\main\com\stulsoft\pkotlin\gradle1\MainKt.class
