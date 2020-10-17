@@ -6,5 +6,7 @@ Playing with Kotlin
 * basics - playing with Kotlin: basics
 * coroutines-basics - playing with Kotlin Coroutines (multi-threading)
 * exec1 - base project for creating executable JAR for Kotlin
+* gradle1 - base project for creating executable JAR for Kotlin on Gradle
 * vertx - playing with Vertx on Kotlin
+* vertx - playing with Vertx on Kotlin with Gradle
 * websocket - playing with WebSocket on Kotlin
