@@ -3,10 +3,25 @@
 Playing with Kotlin
 
 == Subprojects
+There are two subprojects:
+
+* pkotlin-gradle
+* pkotlin-pom
+
+=== pkotlin-gradle
+Project management via Gradle
+
+==== Modules
 * basics - playing with Kotlin: basics
 * coroutines-basics - playing with Kotlin Coroutines (multi-threading)
-* exec1 - base project for creating executable JAR for Kotlin
 * gradle1 - base project for creating executable JAR for Kotlin on Gradle
-* vertx - playing with Vertx on Kotlin
-* vertx - playing with Vertx on Kotlin with Gradle
+* http4k - HTTP server on Kotlin
+* vertx-gradle - playing with Vertx on Kotlin with Gradle
 * websocket - playing with WebSocket on Kotlin
+
+=== pkotlin-pom
+Project management via Maven
+
+==== Modules
+* exec1 - base project for creating executable JAR for Kotlin
+* vertx - playing with Vertx on Kotlin
