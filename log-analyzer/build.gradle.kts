@@ -30,5 +30,5 @@ tasks.withType<KotlinCompile> {
 
 
 application {
-    mainClass.set("com.stulsoft.pkotlin.gradle1.MainKt")
+    mainClass.set("com.stulsoft.pkotlin.log.analyzer.EtlExecutions")
 }

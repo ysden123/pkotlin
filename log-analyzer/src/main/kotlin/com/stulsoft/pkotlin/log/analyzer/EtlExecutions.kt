@@ -111,7 +111,17 @@ object EtlExecutions {
 
     @JvmStatic
     fun main(args: Array<String>) {
-        etlJobs("c:/transmit/qa/console.txt")
-        etlSteps("c:/transmit/qa/console.txt")
+        var path: String?
+        if (args.size == 1) {
+            path = args[0]
+        } else {
+            println("Enter file path to log file:")
+            path = readLine()
+        }
+        if (path != null) {
+            println("Analyzing $path")
+            etlJobs(path)
+            etlSteps(path)
+        }
     }
 }
