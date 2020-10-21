@@ -9,7 +9,7 @@ package com.stulsoft.pkotlin.nullable
  */
 
 fun foo(s: String?): List<String> {
-    return s!!.split(' ')
+    return s!!.split(' ')   // not-null assertion
 }
 
 fun bar(s: String?): List<String> {
@@ -19,10 +19,11 @@ fun bar(s: String?): List<String> {
 fun main() {
 
     try {
-        println(foo(null))
+        println("foo(null):")
+        println("foo(null): ${foo(null)}")
     } catch (error: Exception) {
         println("error: ${error.message}")
     }
-    println(bar(null))
-    println(foo("1 2 3 "))
+    println("bar(null): ${bar(null)}")
+    println("foo(\"1 2 3 \"): ${foo("1 2 3 ")}")
 }
