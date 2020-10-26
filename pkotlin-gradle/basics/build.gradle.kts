@@ -19,6 +19,9 @@ val logVersion = "2.13.3"
 
 dependencies {
     testImplementation(kotlin("test-junit"))
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation("org.apache.commons:commons-lang3:3.11")
+
 //    Logging
     implementation("org.apache.logging.log4j:log4j-core:$logVersion")
     implementation("org.apache.logging.log4j:log4j-api:$logVersion")
