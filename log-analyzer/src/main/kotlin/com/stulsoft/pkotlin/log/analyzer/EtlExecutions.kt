@@ -4,6 +4,7 @@
 
 package com.stulsoft.pkotlin.log.analyzer
 
+import org.apache.commons.lang3.time.DurationFormatUtils
 import org.slf4j.LoggerFactory
 import java.io.File
 import java.text.NumberFormat
@@ -12,7 +13,7 @@ import java.text.NumberFormat
  * @author Yuriy Stul
  */
 object EtlExecutions {
-    val logger = LoggerFactory.getLogger("")
+    private val logger = LoggerFactory.getLogger("")
 
     private fun jobs(filePath: String) {
         val insertText = "In ETLJobRegisterVerticle.handler: finished insert in"
@@ -54,10 +55,20 @@ object EtlExecutions {
                         }
                 val nf = NumberFormat.getInstance()
                 if (insertCount > 0) {
-                    logger.info("Insert Job operation: operations=${nf.format(insertCount)} min=${nf.format(insertMin)}ms, max=${nf.format(insertMax)}ms, average=${nf.format(insertTotal / insertCount)}ms")
+                    val format = "HH:mm:ss.SSS"
+                    val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(insertMin, format))
+                    val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(insertMax, format))
+                    val averageText = trimLeadingZerosTime(DurationFormatUtils
+                            .formatDuration(insertTotal / insertCount, format))
+                    logger.info("Insert Job operation: operations=${nf.format(insertCount)} min=$minText, max=$maxText, average=$averageText")
                 }
                 if (updateCount > 0) {
-                    logger.info("Update Job operation: operations=${nf.format(updateCount)} min=${nf.format(updateMin)}ms, max=${nf.format(updateMax)}ms, average=${nf.format(updateTotal / updateCount)}ms")
+                    val format = "HH:mm:ss.SSS"
+                    val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(updateMin, format))
+                    val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(updateMax, format))
+                    val averageText = trimLeadingZerosTime(DurationFormatUtils
+                            .formatDuration(updateTotal / updateCount, format))
+                    logger.info("Update Job operation: operations=${nf.format(updateCount)} min=$minText, max=$maxText, average=$averageText")
                 }
             }
         } catch (ex: Exception) {
@@ -67,17 +78,17 @@ object EtlExecutions {
 
     private fun steps(filePath: String) {
         val text = "In kafkaMessageHandlerAsync: finished in"
-        fun extractNumber(line: String): Int {
+        fun extractNumber(line: String): Long {
             val start = line.indexOf(text) + text.length + 1
             val end = line.indexOf(' ', start)
             val numberAsText = line.subSequence(start, end).toString()
-            return numberAsText.toInt()
+            return numberAsText.toLong()
         }
 
-        var amount = 0
-        var total = 0
-        var min = Int.MAX_VALUE
-        var max = 0
+        var amount = 0L
+        var total = 0L
+        var min = Long.MAX_VALUE
+        var max = 0L
 
         try {
             File(filePath).useLines {
@@ -93,8 +104,12 @@ object EtlExecutions {
                         }
                 val nf = NumberFormat.getInstance()
                 if (amount > 0) {
-                    val average = total.toFloat() / amount.toFloat()
-                    logger.info("Step registration operations=${nf.format(amount)}, min=${nf.format(min)}ms, max=${nf.format(max)}ms, average=${nf.format(average)}ms")
+                    val format = "HH:mm:ss.SSS"
+                    val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(min, format))
+                    val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(max, format))
+                    val averageText = trimLeadingZerosTime(DurationFormatUtils
+                            .formatDuration(total / amount, format))
+                    logger.info("Step registration operations=${nf.format(amount)}, min=$minText, max=$maxText, average=$averageText")
                 } else
                     logger.info("Step registration operations=${nf.format(amount)}")
             }
