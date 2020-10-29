@@ -1,0 +1,12 @@
+= vertx-dependent-deploy
+
+This project demonstrates synchronization of starting processes
+(sending messages from one verticle to another verticle) between
+different verticles.
+
+Suggested approach allows preventing the sending a message to a verticle
+before the verticle will finish deployment.
+
+The "bad" package is example of non-synchronized processes.
+
+The "good" package is example of synchronized processes.
