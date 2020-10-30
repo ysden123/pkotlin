@@ -63,20 +63,20 @@ object EtlExecutions {
             val nf = NumberFormat.getInstance()
             if (insertCount > 0) {
                 val format = "HH:mm:ss.SSS"
-                val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(insertMin, format))
-                val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(insertMax, format))
-                val averageText = trimLeadingZerosTime(DurationFormatUtils
-                        .formatDuration(insertTotal / insertCount, format))
+                val minText = DurationFormatUtils.formatDuration(insertMin, format)
+                val maxText = DurationFormatUtils.formatDuration(insertMax, format)
+                val averageText = DurationFormatUtils
+                        .formatDuration(insertTotal / insertCount, format)
                 val outputText = "Insert Job operation: operations=${nf.format(insertCount)} min=$minText, max=$maxText, average=$averageText"
                 println(outputText)
                 logger.info(outputText)
             }
             if (updateCount > 0) {
                 val format = "HH:mm:ss.SSS"
-                val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(updateMin, format))
-                val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(updateMax, format))
-                val averageText = trimLeadingZerosTime(DurationFormatUtils
-                        .formatDuration(updateTotal / updateCount, format))
+                val minText = DurationFormatUtils.formatDuration(updateMin, format)
+                val maxText = DurationFormatUtils.formatDuration(updateMax, format)
+                val averageText = DurationFormatUtils
+                        .formatDuration(updateTotal / updateCount, format)
                 val outputText = "Update Job operation: operations=${nf.format(updateCount)} min=$minText, max=$maxText, average=$averageText"
                 println(outputText)
                 logger.info(outputText)
@@ -120,10 +120,10 @@ object EtlExecutions {
             val nf = NumberFormat.getInstance()
             if (amount > 0) {
                 val format = "HH:mm:ss.SSS"
-                val minText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(min, format))
-                val maxText = trimLeadingZerosTime(DurationFormatUtils.formatDuration(max, format))
-                val averageText = trimLeadingZerosTime(DurationFormatUtils
-                        .formatDuration(total / amount, format))
+                val minText = DurationFormatUtils.formatDuration(min, format)
+                val maxText = DurationFormatUtils.formatDuration(max, format)
+                val averageText = DurationFormatUtils
+                        .formatDuration(total / amount, format)
                 val outputText = "Step registration operations=${nf.format(amount)}, min=$minText, max=$maxText, average=$averageText"
                 println(outputText)
                 logger.info(outputText)
