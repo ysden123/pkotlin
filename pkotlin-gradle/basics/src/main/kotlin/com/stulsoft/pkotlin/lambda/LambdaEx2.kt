@@ -16,6 +16,10 @@ object LambdaEx2 {
         return f1(f2(p1))
     }
 
+    private fun bar(p:String, log:(String) -> Unit){
+        log(p)
+    }
+
     @JvmStatic
     fun main(args: Array<String>) {
         println("${f1(123) { it + 22 }}")
@@ -38,5 +42,8 @@ object LambdaEx2 {
                     it - 17
                 })
         println("r5=$r5")
+
+        bar("test text 1"){println("In logger: it is a $it")}
+        bar("test text 2"){println("In logger: it is a $it")}
     }
 }
