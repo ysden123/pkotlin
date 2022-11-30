@@ -4,7 +4,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm")
 }
 
 group = "com.stulsoft.pkotlin"
@@ -14,16 +14,15 @@ repositories {
     mavenCentral()
 }
 
-val logVersion = "2.13.3"
-val junit5Version = "5.7.0"
+val junit5Version = "5.9.1"
 
 dependencies {
-    implementation("org.apache.commons:commons-lang3:3.11")
+    implementation("org.apache.commons:commons-lang3:${findProperty("commonsLang3Version")}")
 
 //    Logging
-    implementation("org.apache.logging.log4j:log4j-core:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-api:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$logVersion")
+    implementation("org.apache.logging.log4j:log4j-core:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-api:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${findProperty("logVersion")}")
 
     // test
 //    testImplementation(kotlin("test-junit"))
@@ -32,7 +31,7 @@ dependencies {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = findProperty("jvmTarget") as String?
 }
 
 tasks.withType<Test> {

@@ -5,7 +5,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm")
     application
 }
 group = "com.stulsoft.pkotlin"
@@ -15,7 +15,6 @@ repositories {
     mavenCentral()
 }
 
-val logVersion = "2.13.3"
 val http4kVersion = "3.265.0"
 
 dependencies {
@@ -25,12 +24,12 @@ dependencies {
 	implementation("org.http4k:http4k-client-okhttp:$http4kVersion")
     testImplementation(kotlin("test-junit"))
 //    Logging
-    implementation("org.apache.logging.log4j:log4j-core:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-api:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$logVersion")
+    implementation("org.apache.logging.log4j:log4j-core:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-api:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${findProperty("logVersion")}")
 }
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = findProperty("jvmTarget") as String?
 }
 
 /*

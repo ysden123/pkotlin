@@ -5,7 +5,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm")
     application
 }
 group = "com.stulsoft.pkotlin"
@@ -15,19 +15,17 @@ repositories {
     mavenCentral()
 }
 
-val logVersion = "2.13.3"
-
 dependencies {
 //	WebSocket
-    implementation("org.java-websocket:Java-WebSocket:1.5.1")
+    implementation("org.java-websocket:Java-WebSocket:1.5.3")
     testImplementation(kotlin("test-junit"))
 //    Logging
-    implementation("org.apache.logging.log4j:log4j-core:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-api:$logVersion")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:$logVersion")
+    implementation("org.apache.logging.log4j:log4j-core:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-api:${findProperty("logVersion")}")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${findProperty("logVersion")}")
 }
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = findProperty("jvmTarget") as String?
 }
 
 /*
