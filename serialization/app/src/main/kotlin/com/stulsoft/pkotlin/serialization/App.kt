@@ -18,12 +18,14 @@ class App {
         }
 }
 
+@OptIn(ExperimentalSerializationApi::class)
 fun main() {
     val data = Project("kotlin.serialization", "Kotlin")
+    println("data $data")
     val str = Json.encodeToString(data)
-    println(str)
+    println("str: $str")
     val data1 = Json.decodeFromString<Project>(str)
-    println("data1 $data1")
+    println("data1: $data1")
 
     val fileName ="c:/work/data.json"
     Json.encodeToStream(data, FileOutputStream(fileName))
