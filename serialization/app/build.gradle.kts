@@ -3,7 +3,7 @@
  */
 
 plugins {
-    val kotlinVersion = "1.7.21"
+    val kotlinVersion = "1.7.22"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
     // Apply the application plugin to add support for building a CLI application in Java.
